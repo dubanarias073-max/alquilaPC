@@ -1,0 +1,35 @@
+{% extends "liquidacion/base.html" %}
+{% load pesos %}
+{% block titulo %}Recibo N.º {{ registro.numero }} · ALQUILAPC{% endblock %}
+{% block contenido %}
+<section class="tarjeta recibo" id="recibo">
+  <div class="recibo-cab">
+    <div><strong>ALQUILAPC</strong><br><small>Recibo de alquiler</small></div>
+    <div class="derecha">N.º <strong id="numero">{{ registro.numero }}</strong><br><small>{{ registro.fecha|date:"d/m/Y H:i" }}</small></div>
+  </div>
+  <table class="detalle">
+    <tr><th>Cliente</th><td id="r-nombre">{{ l.nombre }}</td></tr>
+    <tr><th>Opción de alquiler</th><td id="r-modalidad">{{ l.modalidad_texto }}</td></tr>
+    <tr><th>Equipos alquilados</th><td id="r-equipos">{{ l.equipos }}</td></tr>
+    <tr><th>Días iniciales</th><td id="r-dias">{{ l.dias_iniciales }}</td></tr>
+    <tr><th>Días adicionales</th><td id="r-adicionales">{{ l.dias_adicionales }}</td></tr>
+  </table>
+  <table class="detalle valores">
+    <tr><th>Valor alquiler</th><td class="num" id="r-alquiler">{{ l.valor_alquiler|pesos }}</td></tr>
+    <tr><th>Valor días adicionales</th><td class="num" id="r-valor-adicional">{{ l.valor_adicional_bruto|pesos }}</td></tr>
+    <tr><th>Descuento días adicionales (2 %)</th><td class="num" id="r-dto-adicional">−{{ l.descuento_adicional|pesos }}</td></tr>
+    <tr><th>Descuento establecimiento (5 %)</th><td class="num" id="r-dto-establecimiento">−{{ l.descuento_establecimiento|pesos }}</td></tr>
+    <tr><th>Total descuentos</th><td class="num" id="r-descuentos">{{ l.total_descuentos|pesos }}</td></tr>
+    <tr><th>Incremento domicilio fuera de la ciudad (5 %)</th><td class="num" id="r-domicilio">+{{ l.incremento_domicilio|pesos }}</td></tr>
+    <tr class="total"><th>TOTAL A PAGAR</th><td class="num" id="r-total">{{ l.total|pesos }}</td></tr>
+  </table>
+  <p class="nota">
+    {% if l.total_descuentos %}Este servicio tiene descuentos.{% else %}Este servicio no tiene descuentos.{% endif %}
+    {% if l.incremento_domicilio %}Incluye incremento por domicilio.{% else %}Sin incremento por domicilio.{% endif %}
+  </p>
+  <div class="acciones no-print">
+    <button type="button" onclick="window.print()">Imprimir recibo</button>
+    <a class="boton-sec" href="{% url 'liquidacion:inicio' %}">Nueva liquidación</a>
+  </div>
+</section>
+{% endblock %}

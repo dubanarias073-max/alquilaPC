@@ -1,0 +1,18 @@
+{% load static %}<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}ALQUILAPC{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'liquidacion/estilos.css' %}">
+</head>
+<body>
+  <header class="barra no-print">
+    <a href="{% url 'liquidacion:inicio' %}" class="marca">ALQUILA<span>PC</span></a>
+    <span class="sub">Alquiler de portátiles por días · $35.000 por equipo/día</span>
+  </header>
+  <main class="contenedor">
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+</html>

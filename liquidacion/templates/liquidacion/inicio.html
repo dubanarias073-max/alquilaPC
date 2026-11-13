@@ -1,0 +1,77 @@
+{% extends "liquidacion/base.html" %}
+{% load pesos %}
+{% block contenido %}
+<div class="grid">
+  <section class="tarjeta">
+    <h1>Liquidar servicio</h1>
+    {% if errores %}<div class="alerta" role="alert">Corrija los campos marcados para continuar.</div>{% endif %}
+    <form method="post" action="{% url 'liquidacion:liquidar' %}" id="form-liquidar" novalidate>
+      {% csrf_token %}
+      <label for="nombre">Nombre del cliente</label>
+      <input id="nombre" name="nombre" value="{{ datos.nombre|default:'' }}" maxlength="100">
+      {% if errores.nombre %}<p class="error">{{ errores.nombre }}</p>{% endif %}
+
+      <div class="fila">
+        <div>
+          <label for="equipos">Número de equipos</label>
+          <input id="equipos" name="equipos" type="number" min="2" value="{{ datos.equipos|default:'' }}">
+          {% if errores.equipos %}<p class="error">{{ errores.equipos }}</p>{% endif %}
+        </div>
+        <div>
+          <label for="dias_iniciales">Días iniciales</label>
+          <input id="dias_iniciales" name="dias_iniciales" type="number" min="1" value="{{ datos.dias_iniciales|default:'' }}">
+          {% if errores.dias_iniciales %}<p class="error">{{ errores.dias_iniciales }}</p>{% endif %}
+        </div>
+        <div>
+          <label for="dias_adicionales">Días adicionales</label>
+          <input id="dias_adicionales" name="dias_adicionales" type="number" min="0" value="{{ datos.dias_adicionales|default:'' }}">
+          {% if errores.dias_adicionales %}<p class="error">{{ errores.dias_adicionales }}</p>{% endif %}
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Tipo de servicio</legend>
+        {% for codigo, texto in modalidades %}
+        <label class="radio"><input type="radio" name="modalidad" value="{{ codigo }}" {% if datos.modalidad == codigo %}checked{% endif %}> {{ texto }}</label>
+        {% endfor %}
+        {% if errores.modalidad %}<p class="error">{{ errores.modalidad }}</p>{% endif %}
+      </fieldset>
+
+      <ul class="reglas">
+        <li>Días adicionales: 2 % de descuento sobre su valor.</li>
+        <li>En el establecimiento: 5 % de descuento sobre el total.</li>
+        <li>Fuera de la ciudad: cargo de 5 % sobre el total.</li>
+      </ul>
+      <button type="submit">Liquidar y generar factura</button>
+    </form>
+  </section>
+
+  <section class="tarjeta">
+    <h2>Consultar servicio</h2>
+    <form method="get" action="{% url 'liquidacion:consultar' %}" class="consulta">
+      <input name="numero" placeholder="N.º de servicio" aria-label="Número de servicio">
+      <button type="submit">Consultar</button>
+    </form>
+    {% if error_consulta %}<p class="error">{{ error_consulta }}</p>{% endif %}
+
+    <h3>Servicios liquidados</h3>
+    {% if servicios %}
+    <table class="lista">
+      <thead><tr><th>N.º</th><th>Cliente</th><th>Modalidad</th><th class="num">Total</th></tr></thead>
+      <tbody>
+      {% for s in servicios %}
+        <tr>
+          <td><a href="{% url 'liquidacion:recibo' s.numero %}">{{ s.numero }}</a></td>
+          <td>{{ s.liquidacion.nombre }}</td>
+          <td>{{ s.liquidacion.modalidad_texto }}</td>
+          <td class="num">{{ s.liquidacion.total|pesos }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="vacio">Aún no hay servicios. Los datos se guardan en memoria y se borran al reiniciar el servidor.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

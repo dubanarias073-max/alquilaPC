@@ -1,0 +1,17 @@
+flowchart TD
+    A([Inicio]) --> B[/Nombre, equipos, días iniciales,<br/>días adicionales, modalidad/]
+    B --> V{¿Datos válidos?}
+    V -- No --> E[Mostrar mensajes de error] --> B
+    V -- Sí --> C["valor_alquiler = equipos × días × 35.000"]
+    C --> D["valor_adicional = equipos × adicionales × 35.000"]
+    D --> F["dto_adicional = 2 % × valor_adicional"]
+    F --> G["subtotal = alquiler + adicional − dto_adicional"]
+    G --> H{Modalidad}
+    H -- Establecimiento --> I["dto_establecimiento = 5 % × subtotal"]
+    H -- Fuera de la ciudad --> J["domicilio = 5 % × subtotal"]
+    H -- Dentro de la ciudad --> K[Sin descuento ni cargo]
+    I --> T
+    J --> T
+    K --> T["total = subtotal − dto_establecimiento + domicilio"]
+    T --> R[Generar recibo]
+    R --> Z([Fin])

@@ -1,0 +1,57 @@
+classDiagram
+    direction LR
+    class calculos {
+        <<módulo>>
+        +VALOR_DIA = 35000
+        +MIN_EQUIPOS = 2
+        +MAX_NOMBRE = 100
+        +validar_datos(nombre, equipos, dias, adicionales, modalidad) tuple
+        +calcular_valores(...) Liquidacion
+        +calculo_alquiler(equipos, dias) Decimal
+        +calculo_alquiler_adicional(equipos, adicionales) Decimal
+        +calculo_descuento(alquiler, adicional, modalidad) tuple
+        +calculo_alquiler_adicional_dto(valor) Decimal
+        +calculo_dentro_establecimiento(subtotal, modalidad) Decimal
+        +calculo_domicilio(valor, modalidad) Decimal
+    }
+    class Liquidacion {
+        <<dataclass>>
+        +nombre: str
+        +equipos: int
+        +dias_iniciales: int
+        +dias_adicionales: int
+        +modalidad: str
+        +valor_alquiler: Decimal
+        +valor_adicional_bruto: Decimal
+        +descuento_adicional: Decimal
+        +descuento_establecimiento: Decimal
+        +total_descuentos: Decimal
+        +incremento_domicilio: Decimal
+        +total: Decimal
+        +modalidad_texto() str
+        +a_dict() dict
+    }
+    class ErrorValidacion {
+        +errores: dict
+    }
+    class RepositorioMemoria {
+        -_datos: dict
+        -_siguiente: int
+        +guardar(liquidacion) int
+        +obtener(numero) dict
+        +listar() list
+        +limpiar()
+    }
+    class views {
+        <<Django>>
+        +inicio(request)
+        +liquidar(request)
+        +consultar(request)
+        +recibo(request, numero)
+    }
+    ValueError <|-- ErrorValidacion
+    calculos ..> Liquidacion : crea
+    calculos ..> ErrorValidacion : lanza
+    views ..> calculos : usa
+    views ..> RepositorioMemoria : guarda / consulta
+    RepositorioMemoria o-- Liquidacion

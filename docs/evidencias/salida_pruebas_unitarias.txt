@@ -1,0 +1,75 @@
+Found 64 test(s).
+Skipping setup of unused database(s): default.
+System check identified no issues (0 silenced).
+test_consultar_servicio_existente (tests.test_web.TestWeb.test_consultar_servicio_existente) ... ok
+test_consultar_servicio_inexistente (tests.test_web.TestWeb.test_consultar_servicio_inexistente) ... ok
+test_consultar_sin_numero (tests.test_web.TestWeb.test_consultar_sin_numero) ... ok
+test_datos_invalidos_no_generan_recibo (tests.test_web.TestWeb.test_datos_invalidos_no_generan_recibo) ... ok
+test_formulario_conserva_datos_tras_error (tests.test_web.TestWeb.test_formulario_conserva_datos_tras_error) ... ok
+test_liquidar_por_get_no_permitido (tests.test_web.TestWeb.test_liquidar_por_get_no_permitido) ... ok
+test_liquidar_redirige_al_recibo (tests.test_web.TestWeb.test_liquidar_redirige_al_recibo) ... ok
+test_listado_en_pagina_principal (tests.test_web.TestWeb.test_listado_en_pagina_principal) ... ok
+test_nombre_largo_rechazado (tests.test_web.TestWeb.test_nombre_largo_rechazado) ... ok
+test_numeracion_consecutiva (tests.test_web.TestWeb.test_numeracion_consecutiva) ... ok
+test_pagina_principal_responde (tests.test_web.TestWeb.test_pagina_principal_responde) ... ok
+test_recibo_contiene_datos_rn07 (tests.test_web.TestWeb.test_recibo_contiene_datos_rn07) ... ok
+test_recibo_inexistente_404 (tests.test_web.TestWeb.test_recibo_inexistente_404) ... ok
+test_calculo_alquiler (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_calculo_alquiler) ... ok
+test_calculo_alquiler_adicional (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_calculo_alquiler_adicional) ... ok
+test_calculo_alquiler_adicional_cero (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_calculo_alquiler_adicional_cero) ... ok
+test_calculo_alquiler_adicional_dto (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_calculo_alquiler_adicional_dto) ... ok
+test_calculo_descuento_orden_domicilio_despues_de_descuentos (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_calculo_descuento_orden_domicilio_despues_de_descuentos) ... ok
+test_domicilio_rama_falsa (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_domicilio_rama_falsa) ... ok
+test_domicilio_rama_verdadera (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_domicilio_rama_verdadera) ... ok
+test_establecimiento_rama_falsa (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_establecimiento_rama_falsa) ... ok
+test_establecimiento_rama_verdadera (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_establecimiento_rama_verdadera) ... ok
+test_redondeo_half_up (tests.test_caja_blanca.TestFuncionesDelDiagrama.test_redondeo_half_up) ... ok
+test_a_dict_incluye_texto_modalidad (tests.test_caja_blanca.TestLiquidacion.test_a_dict_incluye_texto_modalidad) ... ok
+test_total_es_coherente (tests.test_caja_blanca.TestLiquidacion.test_total_es_coherente) ... ok
+test_dias_adicionales_none_es_cero (tests.test_caja_blanca.TestRamasDeValidacion.test_dias_adicionales_none_es_cero) ... ok
+test_entero_acepta_negativo_en_texto (tests.test_caja_blanca.TestRamasDeValidacion.test_entero_acepta_negativo_en_texto) ... ok
+test_entero_acepta_texto_con_espacios (tests.test_caja_blanca.TestRamasDeValidacion.test_entero_acepta_texto_con_espacios) ... ok
+test_entero_rechaza_booleano (tests.test_caja_blanca.TestRamasDeValidacion.test_entero_rechaza_booleano) ... ok
+test_entero_rechaza_doble_signo (tests.test_caja_blanca.TestRamasDeValidacion.test_entero_rechaza_doble_signo) ... ok
+test_mensaje_de_excepcion_contiene_campos (tests.test_caja_blanca.TestRamasDeValidacion.test_mensaje_de_excepcion_contiene_campos) ... ok
+test_validar_normaliza_nombre (tests.test_caja_blanca.TestRamasDeValidacion.test_validar_normaliza_nombre) ... ok
+test_s01_2_equipos_1_dia_ciudad (tests.test_caja_negra.TestEscenariosPlan.test_s01_2_equipos_1_dia_ciudad) ... ok
+test_s02_2_equipos_3_dias_fuera (tests.test_caja_negra.TestEscenariosPlan.test_s02_2_equipos_3_dias_fuera) ... ok
+test_s03_5_equipos_10_dias_establecimiento (tests.test_caja_negra.TestEscenariosPlan.test_s03_5_equipos_10_dias_establecimiento) ... ok
+test_s04_con_dias_adicionales (tests.test_caja_negra.TestEscenariosPlan.test_s04_con_dias_adicionales) ... ok
+test_s05_maximo_descuento_establecimiento_con_adicionales (tests.test_caja_negra.TestEscenariosPlan.test_s05_maximo_descuento_establecimiento_con_adicionales) ... ok
+test_dias_adicionales_0_sin_descuento (tests.test_caja_negra.TestParticionesYLimites.test_dias_adicionales_0_sin_descuento) ... ok
+test_dias_adicionales_1 (tests.test_caja_negra.TestParticionesYLimites.test_dias_adicionales_1) ... ok
+test_dias_adicionales_menos_1 (tests.test_caja_negra.TestParticionesYLimites.test_dias_adicionales_menos_1) ... ok
+test_dias_adicionales_vacio_equivale_a_cero (tests.test_caja_negra.TestParticionesYLimites.test_dias_adicionales_vacio_equivale_a_cero) ... ok
+test_dias_iniciales_0 (tests.test_caja_negra.TestParticionesYLimites.test_dias_iniciales_0) ... ok
+test_dias_iniciales_1_valido (tests.test_caja_negra.TestParticionesYLimites.test_dias_iniciales_1_valido) ... ok
+test_dias_iniciales_negativo (tests.test_caja_negra.TestParticionesYLimites.test_dias_iniciales_negativo) ... ok
+test_equipos_0 (tests.test_caja_negra.TestParticionesYLimites.test_equipos_0) ... ok
+test_equipos_1_limite_invalido (tests.test_caja_negra.TestParticionesYLimites.test_equipos_1_limite_invalido) ... ok
+test_equipos_2_limite_valido (tests.test_caja_negra.TestParticionesYLimites.test_equipos_2_limite_valido) ... ok
+test_equipos_3_valido (tests.test_caja_negra.TestParticionesYLimites.test_equipos_3_valido) ... ok
+test_equipos_decimal (tests.test_caja_negra.TestParticionesYLimites.test_equipos_decimal) ... ok
+test_equipos_texto (tests.test_caja_negra.TestParticionesYLimites.test_equipos_texto) ... ok
+test_modalidad_invalida_4 (tests.test_caja_negra.TestParticionesYLimites.test_modalidad_invalida_4) ... ok
+test_modalidad_vacia (tests.test_caja_negra.TestParticionesYLimites.test_modalidad_vacia) ... ok
+test_nombre_100_caracteres_valido (tests.test_caja_negra.TestParticionesYLimites.test_nombre_100_caracteres_valido) ... ok
+test_nombre_101_caracteres_invalido (tests.test_caja_negra.TestParticionesYLimites.test_nombre_101_caracteres_invalido) ... ok
+test_nombre_solo_espacios (tests.test_caja_negra.TestParticionesYLimites.test_nombre_solo_espacios) ... ok
+test_nombre_vacio (tests.test_caja_negra.TestParticionesYLimites.test_nombre_vacio) ... ok
+test_varios_errores_a_la_vez (tests.test_caja_negra.TestParticionesYLimites.test_varios_errores_a_la_vez) ... ok
+test_cn01_en_la_ciudad (tests.test_caja_negra.TestTablaReferenciaTaller.test_cn01_en_la_ciudad) ... ok
+test_cn02_fuera_de_la_ciudad (tests.test_caja_negra.TestTablaReferenciaTaller.test_cn02_fuera_de_la_ciudad) ... ok
+test_cn03_en_el_establecimiento (tests.test_caja_negra.TestTablaReferenciaTaller.test_cn03_en_el_establecimiento) ... ok
+test_casos_aprobados_no_cambian (tests.test_regresion.TestRegresion.test_casos_aprobados_no_cambian) ... ok
+test_hallazgo_h01_descuento_adicional_no_es_por_dia (tests.test_regresion.TestRegresion.test_hallazgo_h01_descuento_adicional_no_es_por_dia)
+H-01: el 2 % es sobre el total de días adicionales, no 2 % x cada día. ... ok
+test_hallazgo_h02_domicilio_sobre_valor_con_descuento (tests.test_regresion.TestRegresion.test_hallazgo_h02_domicilio_sobre_valor_con_descuento)
+H-02: el 5 % de domicilio se calcula después del descuento del 2 %. ... ok
+test_hallazgo_h03_nombre_maximo_100 (tests.test_regresion.TestRegresion.test_hallazgo_h03_nombre_maximo_100)
+H-03: el backend debe rechazar nombres de más de 100 caracteres. ... ok
+
+----------------------------------------------------------------------
+Ran 64 tests in 0.030s
+
+OK

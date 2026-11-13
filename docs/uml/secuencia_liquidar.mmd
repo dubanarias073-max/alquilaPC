@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor U as Empleado
+    participant N as Navegador
+    participant V as views.liquidar
+    participant C as calculos
+    participant R as RepositorioMemoria
+    U->>N: Diligencia formulario y pulsa "Liquidar"
+    N->>V: POST /liquidar/
+    V->>C: calcular_valores(datos)
+    C->>C: validar_datos()
+    alt Datos inválidos
+        C-->>V: ErrorValidacion(errores)
+        V-->>N: 400 formulario con mensajes
+    else Datos válidos
+        C->>C: calculo_alquiler()
+        C->>C: calculo_alquiler_adicional()
+        C->>C: calculo_descuento()
+        Note right of C: 1) dto 2 % adicionales<br/>2) dto 5 % establecimiento<br/>3) cargo 5 % fuera de ciudad
+        C-->>V: Liquidacion
+        V->>R: guardar(liquidacion)
+        R-->>V: numero
+        V-->>N: 302 → /servicio/numero/
+        N->>V: GET /servicio/numero/
+        V->>R: obtener(numero)
+        V-->>N: Recibo (imprimible)
+    end
